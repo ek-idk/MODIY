@@ -1,91 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>House of Brews</title>
+  <title>MODIY</title>
+  <link rel="icon" type="image/x-icon" href="modiy-round.png">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Mobile blocker overlay: hidden by default, shown on small viewports */
+    #mobile-blocker {
+      display: none;
+    }
+
+    /* Use Bootstrap's lg breakpoint (992px). On viewports smaller than that, show the blocker. */
+    @media (max-width: 991.98px) {
+
+      /* hide everything except the blocker to ensure a fully black screen */
+      body>*:not(#mobile-blocker) {
+        display: none !important;
+      }
+
+      #mobile-blocker {
+        display: flex !important;
+        position: fixed;
+        inset: 0;
+        /* top:0; right:0; bottom:0; left:0; */
+        background: #000;
+        color: #fff;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: 9999;
+        padding: 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      }
+
+      #mobile-blocker .message {
+        max-width: 36rem;
+        width: 100%;
+        margin: 0 1rem;
+        font-size: 1.15rem;
+        line-height: 1.4;
+        font-weight: 600;
+        text-transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Mobile blocker (only visible on small screens via CSS media query) -->
+  <div id="mobile-blocker" role="dialog" aria-modal="true" aria-label="Mobile access notice">
+    <div class="message">
+      Please access this website from a desktop or laptop.
+    </div>
+  </div>
 
-    <header class="page-title text-center py-3 fw-light">
-    <h2>House of Brews</h2>
+  <!-- Header -->
+  <header class="page-title py-md-3">
+    <div class="container">
+      <img src="LOGO MODIY z_w transparant.png" alt="MODIY-long-logo" class="img-fluid mx-auto d-block header-logo" />
+    </div>
   </header>
 
   <div class="overlay d-flex flex-column justify-content-center align-items-center h-100">
 
-   <!-- Desktop/Tablet Layout -->
-<div class="container desktop-layout d-none d-lg-flex h-100 align-items-center justify-content-center">
-  <!-- Text Section -->
-  <div class="text-section text-center">
-    <h1 class="mb-4">Discover the House of Brews app</h1>
-    <ul class="mb-4 text-start">
-      <li>Order straight to your table (or your friends table)</li>
-      <li>Collect points with every purchase</li>
-      <li>Be the first to hear about our events</li>
-    </ul>
-    <button id="actionButton" class="btn btn-warning btn-lg fw-bold">Download the App</button>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body p-0">
-          <img src="frame.png" class="img-fluid" alt="Popup Image">
+    <!-- Desktop/Tablet Layout -->
+    <div class="container desktop-layout d-none d-lg-flex h-100 align-items-center justify-content-center">
+      <div class="row w-100 align-items-center justify-content-center">
+        <!-- Text Section (favored width) -->
+        <div class="col-lg-7 d-flex justify-content-end">
+          <div class="text-section text-center me-lg-5 w-75">
+            <div class="text-section text-center">
+              <h1 class="mb-4">Create custom furniture based on your personality</h1>
+              <ul class="mb-4 text-start">
+                <li>Create looks special to you</li>
+                <li>Let your personality create your surroundings</li>
+              </ul>
+              <button id="actionButton" class="btn btn-warning btn-lg fw-bold">Try it out now</button>
+            </div>
+          </div>
+        </div>
+        <!-- Carousel Section (slightly smaller) -->
+        <div class="col-lg-5 d-flex justify-content-center pt-5">
+          <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="5000"
+            data-bs-pause="hover" style="max-width: 420px;">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="carousel-1.png" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="carousel-2.png" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="carousel-3.png" alt="Third slide">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 
-  <!-- Phone Section -->
-  <div class="phone-section d-flex justify-content-center">
-    <div class="iphone">
-      <div class="notch"></div>
-      <div class="screen">
-        <img src="beer-logo.png" alt="Beer Logo" class="logo" />
-      </div>
-    </div>
-  </div>
-</div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Mobile Layout -->
-<div class="mobile-layout d-flex d-lg-none flex-column justify-content-center align-items-center h-100 bg-black w-100">
-  <div class="iphone-mobile mb-4">
-    <div class="notch"></div>
-    <div class="screen">
-      <img src="beer-logo.png" alt="Beer Logo" class="logo-mobile" />
-    </div>
-  </div>
-  <button id="actionButtonMobile" class="btn btn-warning btn-lg fw-bold">Download the App</button>
-</div>
+  <script>
+    // Defensive JS: don't assume elements exist (prevents console errors on small screens where elements are hidden)
+    const desktopButton = document.getElementById('actionButton');
+    const modalEl = document.getElementById('imageModal');
+    let modal = null;
+    if (modalEl && window.bootstrap && window.bootstrap.Modal) {
+      modal = new bootstrap.Modal(modalEl);
+    }
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    const linkURL = "https://www.modiy.nl/en"; // <-- change this to your app link
 
-<script>
-  // Use the same function for both buttons
-  const desktopButton = document.getElementById('actionButton');
-  const mobileButton = document.getElementById('actionButtonMobile');
-  const modalEl = document.getElementById('imageModal');
-  const modal = new bootstrap.Modal(modalEl);
-  const linkURL = "thank-you-page.html"; // <-- change this to your app link
+    if (desktopButton) {
+      desktopButton.addEventListener('click', () => {
+        if (modal) {
+          modal.show();
+        } else {
+          // fallback: navigate to the link
+          window.location.href = linkURL;
+        }
+      });
+    }
 
-  // Desktop button: show modal
-  desktopButton.addEventListener('click', () => {
-    modal.show();
-  });
-
-  // Mobile button: open new tab
-  mobileButton.addEventListener('click', () => {
-    window.open(linkURL, '_blank');
-  });
-</script>
+    // Optional: for screens detected as mobile by width but wanting JS confirmation
+    (function () {
+      const isSmall = window.matchMedia('(max-width: 991.98px)').matches;
+      // if you prefer userAgent detection instead, uncomment below and comment the line above
+      // const isSmall = /Mobi|Android|iPhone|iPad|iPod|Phone/i.test(navigator.userAgent);
+      if (isSmall) {
+        // ensure focus is on the message for accessibility
+        const blocker = document.getElementById('mobile-blocker');
+        if (blocker) blocker.focus?.();
+      }
+    })();
+  </script>
 </body>
+
 </html>
